@@ -17,10 +17,12 @@ import TransactionNumberForm from "../../_components/TransactionNumberForm";
 import Image from "next/image";
 import { Table, TableRow } from "@/components/ui/table";
 import { getEventWithoutImages, getTicket } from "../../_actions/allActions";
+import { formatCurrency } from "@/lib/formatters";
 
 export default function BookTickets({ params, searchParams }) {
   const ticket = searchParams["ticket"];
   const seats = searchParams["seats"];
+  const totalAmount = searchParams["totalAmount"];
 
   return (
     <div className="flex gap-3">
@@ -28,18 +30,19 @@ export default function BookTickets({ params, searchParams }) {
         <ContactDetailsForm></ContactDetailsForm>
         <PaymentOption></PaymentOption>
       </div>
-      <div className="">
+      <div className="grow-0">
         <BillingDetails
           seats={seats}
           eventId={params.id}
           ticketId={ticket}
+          totalAmount={totalAmount}
         ></BillingDetails>
       </div>
     </div>
   );
 }
 
-async function BillingDetails({ seats, ticketId, eventId }) {
+async function BillingDetails({ seats, ticketId, eventId, totalAmount }) {
   const ticket = await getTicket(ticketId);
   const event = await getEventWithoutImages(eventId);
   return (
@@ -61,13 +64,14 @@ async function BillingDetails({ seats, ticketId, eventId }) {
           <p>Tickets</p>
         </div>
       </div>
-      <div>
-        <div>
-          <p>Total</p>
-          <p></p>
+      <div className="m-3">
+        <div className="flex justify-between">
+          <p className="text-lg">Total Amount Payable: </p>
+          <p className="text-lg">{formatCurrency(totalAmount)}</p>
         </div>
       </div>
     </div>
+    
   );
 }
 

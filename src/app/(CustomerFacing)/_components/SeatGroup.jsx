@@ -12,9 +12,7 @@ import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { useCallback, useState } from "react";
 import { IoIosArrowDown } from "react-icons/io";
 
-export default function SeatGroup({
-  groupedTickets,
-}) {
+export default function SeatGroup({ groupedTickets }) {
   const [openGroup, setOpenGroup] = useState(null);
   const [selectedTicket, setSelectedTicket] = useState(null);
 
@@ -22,30 +20,20 @@ export default function SeatGroup({
   const pathName = usePathname();
   const searchParams = useSearchParams();
 
-  // const createQueryString = useCallback(
-  //   (name, value) => {
-  //     const params = new URLSearchParams(searchParams.toString())
-  //     params.set(name, value)
- 
-  //     return params.toString()
-  //   },
-  //   [searchParams]
-  // )
-
   const createQueryStringWithTicketAndTotalAmount = useCallback(
     (ticketId, totalAmount) => {
-       // Create a new URLSearchParams object from the current searchParams
-       const params = new URLSearchParams(searchParams.toString());
-   
-       // Set the new parameters
-       params.set("ticket", ticketId);
-       params.set("totalAmount", totalAmount);
-   
-       // Convert the updated params back to a string
-       return params.toString();
+      // Create a new URLSearchParams object from the current searchParams
+      const params = new URLSearchParams(searchParams.toString());
+
+      // Set the new parameters
+      params.set("ticket", ticketId);
+      params.set("totalAmount", totalAmount);
+
+      // Convert the updated params back to a string
+      return params.toString();
     },
     [searchParams]
-   );
+  );
 
   const handleToggle = (price) => {
     setOpenGroup(openGroup === price ? null : price);
@@ -56,14 +44,21 @@ export default function SeatGroup({
   };
 
   const numberOfSeats = searchParams.get("seats") || 1;
-  const totalAmount = (selectedTicket?.price || 0) * Number(numberOfSeats);  
-  const queryStringWithTicketAndTotalAmount = createQueryStringWithTicketAndTotalAmount(selectedTicket?.id ?? '', totalAmount);
-  
+  const totalAmount = (selectedTicket?.price || 0) * Number(numberOfSeats);
+  const queryStringWithTicketAndTotalAmount =
+    createQueryStringWithTicketAndTotalAmount(
+      selectedTicket?.id ?? "",
+      totalAmount
+    );
+
   return (
     <>
       <p className="font-bold text-lg">Available Seats</p>
       {groupedTickets?.map((ticketGroup) => (
-        <Collapsible key={ticketGroup.price} open={openGroup === ticketGroup.price}>
+        <Collapsible
+          key={ticketGroup.price}
+          open={openGroup === ticketGroup.price}
+        >
           <CollapsibleTrigger
             className="w-full"
             onClick={() => handleToggle(ticketGroup.price)}
@@ -89,20 +84,32 @@ export default function SeatGroup({
       ))}
       <div>
         <p className="font-bold text-lg">
-          Total: {formatCurrency(selectedTicket?.price || 0)} - {numberOfSeats} Seats:{" "}
-          {formatCurrency(totalAmount)}
-        </p>        
+          Total: {formatCurrency(selectedTicket?.price || 0)} - {numberOfSeats}{" "}
+          Seats: {formatCurrency(totalAmount)}
+        </p>
       </div>
-      <Link href={`${pathName}/booking?${queryStringWithTicketAndTotalAmount}`}><button className="flex justify-center w-full py-4 h-auto bg-red-500 rounded-sm text-white text-lg">Book Tickets</button></Link>
+      <div>
+        <Link href={`${pathName}/booking?${queryStringWithTicketAndTotalAmount}`}>
+          <button
+            className={`flex justify-center w-full py-4 h-auto rounded-sm text-white text-lg ${
+              selectedTicket ? "bg-red-500" : "bg-red-300 cursor-not-allowed"
+            }`}
+            disabled={!selectedTicket}
+          >
+            Book Tickets
+          </button>
+        </Link>
+        {!selectedTicket && (
+          <p className="mt-2 text-sm text-red-500">
+            Please select a ticket first
+          </p>
+        )}
+      </div>      
     </>
   );
 }
 
-function SelectableTicket({
-  ticket,
-  isSelected,
-  onSelect,
-}) {
+function SelectableTicket({ ticket, isSelected, onSelect }) {
   const handleClick = () => {
     onSelect(ticket);
   };
@@ -121,5 +128,3 @@ function SelectableTicket({
     </div>
   );
 }
-
-
