@@ -1,7 +1,12 @@
 const db = require('./db')
 
 async function main() {
-  const stadiums = await db.stadium.findMany();
+  const stadiums = await db.stadium.findMany({
+    include: {
+      images: true,
+      tickets: true
+    }
+  });
   console.log("stadiums: ",stadiums);
 
   // console.log("Seeding completed successfully!");
