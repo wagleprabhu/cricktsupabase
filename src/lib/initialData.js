@@ -1,3 +1,4 @@
+const { url } = require("inspector");
 
 const randomUUID = require("crypto").randomUUID;
 /*
@@ -1017,6 +1018,25 @@ const tickets = [
 //   stadiumId String
 //   stadium   Stadium @relation(fields: [stadiumId], references: [id], onDelete: Cascade)
 // }
+const carouselImages = [
+  {
+    id: randomUUID(),
+    url: "/carouselImages/c1.avif",
+  },
+  {
+    id: randomUUID(),
+    url: "/carouselImages/c2.avif",
+  },
+  {
+    id: randomUUID(),
+    url: "/carouselImages/c3.avif",
+  },
+  {
+    id: randomUUID(),
+    url: "/carouselImages/c4.avif",
+  }
+]
+
 const stadiumImages = [
   {
     id: randomUUID(),
@@ -1127,4 +1147,4 @@ const stadiumImages = [
 ]
 
 // export {stadiums, tickets, stadiumImages}
-module.exports = { stadiums, tickets, stadiumImages };
+module.exports = { stadiums, tickets, stadiumImages, carouselImages };

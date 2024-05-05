@@ -1,6 +1,6 @@
 const db = require("./db");
 
-const { stadiumImages, stadiums, tickets } = require("../lib/initialData");
+const { stadiumImages, stadiums, tickets, carouselImages } = require("../lib/initialData");
 
 
 
@@ -8,17 +8,22 @@ async function main() {
   // await db.stadiumImage.deleteMany({});
   // await db.stadium.deleteMany({});
   // await db.ticket.deleteMany({});
-  await db.category.deleteMany({});
+  // await db.category.deleteMany({});
+  await db.crouselImage.deleteMany({});
   // const createdStadiums = await db.stadium.createMany({
   //   data: stadiums,
   // });
 // create categories cricket, football, chess
-  const createdCategories = await db.category.createMany({
-    data: [
-      { name: "Cricket" },
-      { name: "Football" },
-      { name: "Chess" },
-    ],
+  // const createdCategories = await db.category.createMany({
+  //   data: [
+  //     { name: "Cricket" },
+  //     { name: "Football" },
+  //     { name: "Chess" },
+  //   ],
+  // });
+
+  const createCarouselImages = await db.crouselImage.createMany({
+    data: carouselImages,
   });
 
   // const createdStadiumImages = await db.stadiumImage.createMany({

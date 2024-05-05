@@ -162,7 +162,7 @@ export const getSingleStadium = async (id) => {
 };
 
 export async function getAllCarouselImages() {
-  let imageFiles = await fs.readdir("public/carouselImages");
-  const imagePaths = imageFiles.map((file) => `/carouselImages/${file}`);
+  const imageFiles = await db.crouselImage.findMany();
+  const imagePaths = imageFiles.map((file) => file.url);
   return imagePaths;
 }
