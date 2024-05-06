@@ -68,28 +68,6 @@ export const getTicketsGroupedByPrice = async (stadiumId) => {
   return ticketsForEachPrice;
 };
 
-// export const getTicketsGroupedByPrice = async (stadiumId) => {
-//   const groupedtickets = await db.ticket.groupBy({
-//     by: ["price"],
-//     where: {
-//       stadiumId,
-//     },
-//   });  
-//   const ticketsForEachPrice = await Promise.all( 
-//     groupedtickets.map(async (ticket) => {
-//       const tickets = await db.ticket.findMany({
-//         where: {
-//           price: ticket.price,
-//           stadiumId,
-//         }
-//       });
-//       return {price: ticket.price, tickets: [...tickets]};
-//     })
-//   );
-
-//   console.log("ticketsForEachPrice: ", ticketsForEachPrice);
-//   return ticketsForEachPrice;
-// };
 
 export const getSingleStadium = async (id) => {
   const stadium = await db.stadium.findUnique({

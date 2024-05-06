@@ -10,11 +10,14 @@ export default async function BookEvent({ params: { id } }) {
   const stadium = await getSingleStadium(event.stadiumId);
   const imagePaths = event?.images.map((image) => image.url);
   imagePaths?.shift();
+  console.log("imagePaths: ", imagePaths);
   return (
-    <main className="flex flex-col items-center">
+    <main className="">
       <EventCarousel images={imagePaths} />
-      <EventDetailCard event={event} />
-      <Booking stadium={stadium}></Booking>
+      <div className="flex flex-col items-center">
+        <EventDetailCard event={event} />
+        <Booking stadium={stadium}></Booking>
+      </div>
     </main>
   );
 }

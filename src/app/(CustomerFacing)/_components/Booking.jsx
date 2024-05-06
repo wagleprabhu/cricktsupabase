@@ -18,7 +18,7 @@ export async function Booking({ stadium }) {
         this year
       </p>
       <div>
-        <Collapsible>
+        <Collapsible defaultOpen>
           <CollapsibleTrigger className="w-full">
             <div className="flex justify-between items-center">
               <p className="font-bold text-lg sm:text-xl">Venue Layout</p>

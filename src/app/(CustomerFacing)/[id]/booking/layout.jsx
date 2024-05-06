@@ -7,7 +7,7 @@ export default function BookingLayout({
   return (
     <>
       <Header></Header>
-      <div className="container my-6">{children}</div>      
+      <div className="container m-0 p-0">{children}</div>      
     </>
   );
 }

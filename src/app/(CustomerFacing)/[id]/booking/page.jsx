@@ -26,10 +26,7 @@ export default function BookTickets({ params, searchParams }) {
   const totalAmount = searchParams["totalAmount"];
 
   return (
-    <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-      {/* <div className="mb-6">
-        <Header></Header>
-      </div> */}
+    <div className="container mx-auto px-4 sm:px-6 lg:px-8">      
       <div className="flex flex-col sm:flex-row gap-3">
         <div className="flex-grow flex flex-col gap-2">
           <ContactDetailsForm></ContactDetailsForm>
