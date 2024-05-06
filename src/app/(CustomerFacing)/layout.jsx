@@ -7,7 +7,6 @@ export default function Layout({
 }) {
   return (
     <>
-      {/* <Header></Header> */}
       <div className="container my-6">{children}</div>
       <Image
         src={"/generalAssets/footer.jpeg"}

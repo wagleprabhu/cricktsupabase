@@ -65,7 +65,6 @@ export const getTicketsGroupedByPrice = async (stadiumId) => {
     })
   );
 
-  console.log("ticketsForEachPrice: ", ticketsForEachPrice);
   return ticketsForEachPrice;
 };
 
