@@ -146,7 +146,7 @@ function PaymentOption() {
                 <FaCheck className="ml-1"></FaCheck>
               </div>
               <div className="flex w-full gap-1 p-1 flex-col items-center border-2 border-gray-200 shadow-sm">
-                <p>mfdjkf@aubank</p>
+                <p>Q681910204@ybl</p>
                 <button className="w-full mx-9 flex justify-center rounded-xl border-2 border-blue-700 text-blue-700">
                   <FaCopy className="mr-1"></FaCopy>Copy Upi
                 </button>
