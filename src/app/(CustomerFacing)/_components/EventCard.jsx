@@ -26,7 +26,7 @@ export default function EventCard({ event }) {
           <CardTitle className="line-clamp-2 text-xl font-bold mb-2">{event.title}</CardTitle>
           <div>
             <p className="text-gray-600 mb-1">{event.stadium.name}</p>
-            <p className="text-gray-500 mb-2">{event.description}</p>
+            <p className="text-gray-500 mb-2">{event.description.split('|')[0]}</p>
             <p className="text-gray-700">From {formatCurrency(event.price)} onwards</p>
           </div>
         </CardContent>

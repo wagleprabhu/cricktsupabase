@@ -1,9 +1,10 @@
 import Image from "next/image";
+import Link from "next/link";
 
 export default function Header() {
   return (
     <div className="p-4 bg-white">
-      <Image width={100} height={100} src="/generalAssets/bookmyshow-logo.png" alt="" />
+      <Link href={"/"}><Image width={100} height={100} src="/generalAssets/bookmyshow-logo.png" alt="" /></Link>
     </div>
   );
 }

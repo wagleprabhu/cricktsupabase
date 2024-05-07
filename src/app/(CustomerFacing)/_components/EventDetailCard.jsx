@@ -9,13 +9,13 @@ export function EventDetailCard({ event }) {
   if (!event) {
     return null;
   }
-
+  console.log(event.description.split('|')[0])
   return (
     <div className="w-full sm:w-11/12 bg-white rounded-lg shadow-md overflow-hidden">
       <div className="flex flex-col sm:flex-row items-center justify-between p-4 bg-white text-black">
         <div className="flex flex-col mb-4 sm:mb-0">
           <p className="font-bold text-xl sm:text-2xl">{event.title}</p>
-          <p className="text-gray-800">{event.description} | 4hrs</p>
+          <p className="text-gray-800">{event.description.split('|')[0]} | 4hrs</p>
         </div>
         <BookSeatsDialog />
       </div>

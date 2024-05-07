@@ -63,7 +63,7 @@ async function BillingDetails({ seats, ticketId, eventId, totalAmount }) {
           <p>{event?.date.toDateString()}</p>
         </div>
         <div className="flex flex-col items-center mt-2">
-          <p className="text-lg font-bold">{seats}</p>
+          <p className="text-lg font-bold">{seats ?? 1}</p>
           <p>Tickets</p>
         </div>
       </div>

@@ -16,7 +16,7 @@ export default async function BookEvent({ params: { id } }) {
       <EventCarousel images={imagePaths} />
       <div className="flex flex-col items-center">
         <EventDetailCard event={event} />
-        <Booking stadium={stadium}></Booking>
+        <Booking description={event.description.split('|')[1]} stadium={stadium}></Booking>
       </div>
     </main>
   );

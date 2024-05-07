@@ -1,6 +1,6 @@
 const db = require("./db");
 
-const { stadiumImages, stadiums, tickets, carouselImages } = require("../lib/initialData");
+const { stadiumImages, stadiums, tickets, carouselImages, chidambaramStadium, chidambaramTickets } = require("../lib/initialData");
 
 
 
@@ -9,7 +9,7 @@ async function main() {
   // await db.stadium.deleteMany({});
   // await db.ticket.deleteMany({});
   // await db.category.deleteMany({});
-  await db.crouselImage.deleteMany({});
+  // await db.crouselImage.deleteMany({});
   // const createdStadiums = await db.stadium.createMany({
   //   data: stadiums,
   // });
@@ -22,17 +22,26 @@ async function main() {
   //   ],
   // });
 
-  const createCarouselImages = await db.crouselImage.createMany({
-    data: carouselImages,
-  });
+  // const createCarouselImages = await db.crouselImage.createMany({
+  //   data: carouselImages,
+  // });
 
   // const createdStadiumImages = await db.stadiumImage.createMany({
   //   data: stadiumImages
   // });
 
+  
   // const createdTickets = await db.ticket.createMany({
   //   data: tickets,
   // });
+
+  const createdStadium = await db.stadium.createMany({
+    data: chidambaramStadium,
+  });
+
+  const createdTickets = await db.ticket.createMany({
+    data: chidambaramTickets,
+  });
 
  
   console.log("Seeding completed successfully!");

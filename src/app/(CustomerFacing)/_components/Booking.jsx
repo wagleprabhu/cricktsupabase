@@ -5,17 +5,14 @@ import Image from "next/image";
 import SeatGroup from "./SeatGroup";
 import TermsAndConditions from "./TermsAndConditions";
 
-export async function Booking({ stadium }) {
+export async function Booking({ description ,stadium }) {
   const groupedTickets = stadium ? await getTicketsGroupedByPrice(stadium.id) : null;
 
   return (
     <div className="my-8 p-4 sm:p-6 flex flex-col gap-4 w-full sm:w-11/12 md:w-3/4 lg:w-1/2">
       <p className="font-bold text-lg sm:text-xl">About</p>
       <p className="text-sm sm:text-base">
-        Book tickets for Kolkata Knight Riders vs Punjab Kings IPL 2024 cricket
-        for Fri April 26th, 2024 at Eden Gardens Stadium on BookMyShow.
-        Experience Kolkata Knight Riders and Punjab Kings live at the Stadium
-        this year
+        {description}
       </p>
       <div>
         <Collapsible defaultOpen>
