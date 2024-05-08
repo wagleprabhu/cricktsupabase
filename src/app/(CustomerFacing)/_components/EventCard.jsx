@@ -11,7 +11,7 @@ export default function EventCard({ event }) {
 
   return (
     <Link href={`/${event.id}/`}>
-      <Card className="w-full max-w-sm mx-auto my-4">
+      <Card className="w-full h-full flex flex-col">
         <div className="relative w-full">
           <Image
             src={event.images[0]?.url}
@@ -22,7 +22,7 @@ export default function EventCard({ event }) {
             objectFit="cover"
           />
         </div>
-        <CardContent className="p-4">
+        <CardContent className="p-4 flex-grow">
           <CardTitle className="line-clamp-2 text-xl font-bold mb-2">{event.title}</CardTitle>
           <div>
             <p className="text-gray-600 mb-1">{event.stadium.name}</p>
@@ -34,6 +34,43 @@ export default function EventCard({ event }) {
     </Link>
   );
 }
+
+// import { Event, Prisma } from "@prisma/client";
+// import { Card, CardContent, CardDescription, CardTitle } from "../../../components/ui/card";
+// import Image from "next/image";
+// import { formatCurrency } from "@/lib/formatters";
+// import Link from "next/link";
+
+// export default function EventCard({ event }) {
+//   if (!event) {
+//     return null;
+//   }
+
+//   return (
+//     <Link href={`/${event.id}/`}>
+//       <Card className="w-full max-w-sm mx-auto my-4">
+//         <div className="relative w-full">
+//           <Image
+//             src={event.images[0]?.url}
+//             alt={event.title}
+//             width={384}
+//             height={216}
+//             layout="responsive"
+//             objectFit="cover"
+//           />
+//         </div>
+//         <CardContent className="p-4">
+//           <CardTitle className="line-clamp-2 text-xl font-bold mb-2">{event.title}</CardTitle>
+//           <div>
+//             <p className="text-gray-600 mb-1">{event.stadium.name}</p>
+//             <p className="text-gray-500 mb-2">{event.description.split('|')[0]}</p>
+//             <p className="text-gray-700">From {formatCurrency(event.price)} onwards</p>
+//           </div>
+//         </CardContent>
+//       </Card>
+//     </Link>
+//   );
+// }
 
 
 

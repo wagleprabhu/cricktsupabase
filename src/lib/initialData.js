@@ -105,6 +105,19 @@ const chidambaramStadium = [
   },
 ]
 
+const chidambaramImages = [
+  {
+    id: randomUUID(),
+    url: "/stadium_images/chidambaram2.png",
+    stadiumId: "1fdaa269-f567-4af6-81f0-85b288de35b6"
+  },
+  {
+    id: randomUUID(),
+    url: "/stadium_images/chidambaram1.jpg",
+    stadiumId: "1fdaa269-f567-4af6-81f0-85b288de35b6"
+  },
+]
+
 const chidambaramTickets = [
   {
     id: randomUUID(),
@@ -1538,4 +1551,4 @@ const stadiumImages = [
 ]
 
 // export {stadiums, tickets, stadiumImages}
-module.exports = { stadiums, tickets, stadiumImages, carouselImages, chidambaramStadium, chidambaramTickets };
+module.exports = { stadiums, tickets, stadiumImages,chidambaramImages, carouselImages, chidambaramStadium, chidambaramTickets };
